@@ -1,7 +1,7 @@
-class {'apt':}
+include ::apt
 
 apt::source { 'r-project':
-  location => 'http://cran.rstudio.com/bin/linux/ubuntu',
+  location => 'http://cran.r-project.org/bin/linux/ubuntu',
   repos    => '',
   release  => 'trusty/',
   include  => {
@@ -10,6 +10,7 @@ apt::source { 'r-project':
   key      => {
     'id' => 'E084DAB9'
   },
+  notify => Exec['apt_update'],
 }
 
 package { [
