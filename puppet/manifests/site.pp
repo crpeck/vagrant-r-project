@@ -10,7 +10,7 @@ apt::source { 'r-project':
   key      => {
     'id' => 'E084DAB9'
   },
-  notify => Exec['apt_update'],
+  notify   => Exec['apt_update'],
 }
 
 package { [
@@ -36,10 +36,16 @@ package { [
   require  => Package['ruby-dev'],
 }
 
+exec { 'apt-update':
+  command => '/usr/bin/apt-get update',
+  require => Apt::Source['r-project'],
+}
+
 package { [
             'r-base',
             'r-base-dev',
           ]:
   ensure  => present,
-  require => Apt::Source['r-project'],
+  require => Exec['apt-update'],
 }
+
