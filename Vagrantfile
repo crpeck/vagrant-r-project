@@ -6,7 +6,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "wmit/trusty64"
   config.vm.hostname = "trusty"
-  config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
+  # config.vm.network :forwarded_port, guest: 80, host: 8080, auto_correct: true
   config.vm.provider :virtualbox do |vbox|
     vbox.customize ["modifyvm", :id, "--memory", 2048] 
   end
