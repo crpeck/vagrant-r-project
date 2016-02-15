@@ -26,12 +26,12 @@ sudo apt-get update
 echo -e "\nInstalling ruby-dev"
 sudo apt-get install -y ruby-dev git
 #
-echo -e "\nInstalling librarian-puppet"
-sudo gem install librarian-puppet --no-ri --no-rdoc
+echo -e "\nInstalling r10k"
+sudo gem install r10k --no-ri --no-rdoc
 #
 cd /vagrant/puppet
 echo -e "\nInstalling puppet modules from Puppetfile"
-librarian-puppet install
+r10k puppetfile install
 #
 echo -e "\nCreating file ${RANFILE}, to run ${PROGNAME} during provisioning again you"
 echo "must remove the file named ${RANFILE} inside the vagrant box"
